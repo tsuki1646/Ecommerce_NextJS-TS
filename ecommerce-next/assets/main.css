@@ -1,0 +1,23 @@
+@import "./base.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .fit {
+    min-height: calc(100vh - 88px);
+  }
+}
+
+/* .root {
+  @apply h-full mx-auto;
+
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+} */
+
+.fit {
+  min-height: calc(100vh--88px);
+}
