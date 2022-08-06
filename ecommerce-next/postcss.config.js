@@ -21,6 +21,9 @@ module.exports = {
           "nesting-rules": true, // Enable nesting
         },
       },
+      require("tailwindcss"),
+      require("postcss-nested"),
+      require("autoprefixer"),
     ],
     "tailwindcss",
     "postcss-nesting",
