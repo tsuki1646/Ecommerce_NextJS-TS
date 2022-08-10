@@ -20,7 +20,7 @@ const Marquee: FC<Props> = ({
     [s.secondary]: variant === "secondary",
   });
   return (
-    <div className={s.root}>
+    <div className={rootClassName}>
       {/* and this  */}
       <ReactFastMarquee
         speed={50}
