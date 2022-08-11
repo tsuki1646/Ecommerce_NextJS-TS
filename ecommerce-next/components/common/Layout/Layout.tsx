@@ -12,6 +12,7 @@ type CompProps = {
 const Layout: FC<CompProps> = ({ children }) => {
   //const ui = useUI();
   const { isSidebarOpen, closeSidebar } = useUI();
+  console.log("Re-rendering LAYOUT");
   //console.log(ui);
   return (
     <div className={s.root}>

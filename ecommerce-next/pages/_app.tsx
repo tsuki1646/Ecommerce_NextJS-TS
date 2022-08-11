@@ -10,8 +10,8 @@ function MyApp({
   pageProps,
 }: AppProps & { Component: { Layout: FC } }) {
   const Layout = Component.Layout ?? Noop;
-  const ui = useUI();
-  console.log(ui);
+  //const ui = useUI();
+  //console.log(ui);
 
   return (
     <UIProvider>
