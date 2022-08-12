@@ -1,4 +1,4 @@
-import { createContext, FC, useContext, useReducer } from "react";
+import { createContext, FC, useContext, useReducer, useMemo } from "react";
 
 export interface StateModifiers {
   openSidebar: () => void;
