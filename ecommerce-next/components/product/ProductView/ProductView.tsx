@@ -5,20 +5,37 @@ import { Container, Button } from "@components/ui";
 import Image from "next/image";
 import { Product } from "@common/types/product";
 import { ProductSlider, Swatch } from "@components/product";
+import { Choices, getVariant } from "../helpers";
+import { useUI } from "@components/ui/context";
+import useAddItem from "@framework/cart/use-add-item";
+import { useApiProvider } from "@common";
 
 interface Props {
   product: Product;
 }
 
-type AvailableChoices = "color" | "size" | string;
-
-type Choices = {
-  [P in AvailableChoices]: string;
-};
-
 const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({});
-  console.log(choices);
+  const api = useApiProvider();
+  debugger;
+  const { openSidebar } = useUI();
+  const addItem = useAddItem();
+  //console.log(choices);
+  const variant = getVariant(product, choices);
+  console.log("VARIANT: " + variant);
+  const addToCart = () => {
+    try {
+      const item = {
+        productId: String(product.id),
+        variantId: variant?.id,
+        variantOptions: variant?.options,
+      };
+
+      //alert(JSON.stringify(item));
+      addItem(item);
+      openSidebar();
+    } catch {}
+  };
   return (
     <Container>
       <div className={cn(s.root, "fit", "mb-5")}>
@@ -55,6 +72,7 @@ const ProductView: FC<Props> = ({ product }) => {
                   {option.values.map((optValue) => {
                     const activeChoice =
                       choices[option.displayName.toLowerCase()];
+                    console.log("THIS CHOICE: " + activeChoice);
                     return (
                       <Swatch
                         key={`${option.id}-${optValue.label}`}
@@ -75,12 +93,12 @@ const ProductView: FC<Props> = ({ product }) => {
                 </div>
               </div>
             ))}
+            <div className="pb-14 break-words w-full max-w-xl text-lg">
+              {product.description}
+            </div>
           </section>
           <div>
-            <Button
-              className={s.button}
-              onClick={() => alert("adding to cart")}
-            >
+            <Button className={s.button} onClick={addToCart}>
               Add to Cart
             </Button>
           </div>
