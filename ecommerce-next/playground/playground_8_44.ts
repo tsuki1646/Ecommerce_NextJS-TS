@@ -23,5 +23,5 @@ export default async function play() {
   }
   const data = await getHelloProps();
   sayHello(data.props);
-  debugger;
+  //debugger;
 }

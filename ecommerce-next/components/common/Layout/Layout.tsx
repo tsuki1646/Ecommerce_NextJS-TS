@@ -16,14 +16,16 @@ const Layout: FC<CompProps> = ({ children }) => {
   console.log("Re-rendering LAYOUT");
   //console.log(ui);
   return (
-    <div className={s.root}>
-      <Navbar />
-      <Sidebar onClose={closeSidebar} isOpen={isSidebarOpen}>
-        <CartSidebar />
-      </Sidebar>
-      <main className="fit">{children}</main>
-      <Footer />
-    </div>
+    <ApiProvider>
+      <div className={s.root}>
+        <Navbar />
+        <Sidebar onClose={closeSidebar} isOpen={isSidebarOpen}>
+          <CartSidebar />
+        </Sidebar>
+        <main className="fit">{children}</main>
+        <Footer />
+      </div>
+    </ApiProvider>
   );
 };
 
