@@ -7,7 +7,7 @@ export const handler: MutationHook = {
   fetcher: async ({ fetch, input }) => {
     //debugger;
     const response = await fetch({
-      url: "http://localhost:4000/graphql",
+      //url: "http://localhost:4000/graphql",
       query: `query { hello }`,
     });
     //debugger;
