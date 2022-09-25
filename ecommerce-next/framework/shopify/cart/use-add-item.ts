@@ -4,11 +4,13 @@ import { MutationHook } from "@common/types/hooks";
 export default useAddItem;
 
 export const handler: MutationHook = {
-  fetcher: async ({ fetch, input }) => {
-    //debugger;
+  fetcherOptions: {
+    query: `query {hello}`,
+  },
+  fetcher: async ({ fetch, options }) => {
+    debugger;
     const response = await fetch({
-      //url: "http://localhost:4000/graphql",
-      query: `query { hello }`,
+      ...options,
     });
     //debugger;
     //return JSON.stringify(input) + "_MODIFIED";

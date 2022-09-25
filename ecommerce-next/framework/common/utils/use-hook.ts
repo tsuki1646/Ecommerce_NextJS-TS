@@ -19,6 +19,7 @@ export const useMutationHook = (hook: MutationHook) => {
         //   return JSON.stringify(input) + "_MODIFIED";
         // },
         fetch: fetcher,
+        options: hook.fetcherOptions,
       });
     },
   });
